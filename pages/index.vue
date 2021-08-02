@@ -30,7 +30,6 @@
         Estamos precisando de designers, advogados, linguistas e pessoas que possam ajudar a revisar dados manualmente.<br>
         <br>
         Entre no nosso GitHub e abra um Pull Request!<br>
-        Temos também um grupo no Telegram.
     </v-row>
   </v-col>
 </template>

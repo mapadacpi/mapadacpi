@@ -46,22 +46,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    ['@nuxtjs/axios', {
+      baseURL: 'http://'+process.env.AXIOS_HOST+':'+process.env.AXIOS_PORT
+    }]
   ],
 
-  // Axios settings
-  axios: {
-    baseURL: 'http://'+process.env.AXIOS_HOST+':'+process.env.AXIOS_PORT
-  },
   // Host settings
   target: 'static',
   server: {
     host: process.env.NUXT_HOST // default: localhost
   },
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -85,6 +79,15 @@ export default {
 
   // Disable Server-Side Rendering
   ssr: false,
+  render: {
+     static: {
+       setHeaders(res) {
+         res.setHeader('Access-Control-Allow-Origin', '*')
+         res.setHeader('Access-Control-Allow-Methods', 'GET')
+         res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+       }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
